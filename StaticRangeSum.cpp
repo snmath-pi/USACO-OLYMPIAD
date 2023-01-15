@@ -1,4 +1,5 @@
 /*亲爱的上帝，我求你给我力量来赢得这场战斗。*/
+// Note: use long long as sums can be very large ^_^~math_pi
 #include<iostream>
 using namespace std ;
 using i64 = long long;
