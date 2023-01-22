@@ -8,18 +8,22 @@ int main() {
     std::cin.tie(nullptr);
     i64 X;
     cin >> X;
-    i64 L = 0, R = X;
+    i64 L = -1, R = X;
     int iter = 100;
     auto good = [&](i64 a) {
         return (a * a <= X);
     };
-    while(iter--) {
+    if(X == 1) {
+        cout << 1;
+        return 0;
+    }
+    while(R > L + 1 ) {
         int M = L + (R - L) / 2;
         if(good(M)) {
             L = M;
-        } else R = M - 1;
+        } else R = M;
     }
-    cout << L;
+    cout << L;// This value is floored!
     
     return 0;
 }
