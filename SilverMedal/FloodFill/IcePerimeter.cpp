@@ -41,8 +41,8 @@ void Y() {
 				if(area == curr_area) {
 					perimeter = min(perimeter, curr_perimeter);
 				}
-				else {
-					area = max(area, curr_area);
+				else if(curr_area > area) {
+					area = curr_area;
 					perimeter = curr_perimeter;
 				}
 				curr_area = 0, curr_perimeter = 0;
