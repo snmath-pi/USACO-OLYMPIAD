@@ -26,7 +26,7 @@ int main() {
     int a[n];
     rep(i, n) cin >> a[i];
     int dp[n];
-    dp[0] = max(0, a[0]);
+    dp[0] = a[0]; // if we are allowed to select no element at all dp[0] = max(0, a[0]);
     rng(i, 1, n) {
         dp[i] = max(dp[i-1]+a[i], a[i]);
     }
