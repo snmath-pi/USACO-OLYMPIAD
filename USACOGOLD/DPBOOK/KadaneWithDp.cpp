@@ -30,6 +30,6 @@ int main() {
     rng(i, 1, n) {
         dp[i] = max(dp[i-1]+a[i], a[i]);
     }
-    cout << dp[n-1];
+    cout << *max_element(dp, dp+n);
 
 }
