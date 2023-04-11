@@ -129,4 +129,3 @@ int main() {
 
 
 }
-// link: https://usaco.guide/CPH.pdf#page=112
