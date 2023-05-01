@@ -104,9 +104,10 @@ int main() {
    	// ex
    	int u = (1 << 1) | (1 << 3) | (1 << 4) | (1 << 8);
    	int v = (1 << 7) | (1 << 10);
-
+    
    	cout << __builtin_popcount(u | v); // set union {1, 3, 4, 8, 7, 10};
-
+    // COUNT THE NUMBER OF BIT CHANGES REQUIRED TO CHANGE A -> B FOR EXAMPLE A = 31(11111) B = 14(01100) ANS = 3;
+    cout << __builtin_popcount(u ^ v); // number of bit changes required
    	// iterating through subsets
    	// iterating through all subsets of {0, 1, 2, ..., n-1} (i.e) (2 ^ n-1)
 
