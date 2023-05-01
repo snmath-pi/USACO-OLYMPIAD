@@ -24,6 +24,8 @@ void yesno(bool a) {
  
 int t, n;
 
+// NEW TRICK 101 : TO FIND THE LEFT MOST SET BIT I.E 1110100 -> RETURNING 0000100 -> THIS CAN BE DONE BY X ^ (X & (X-1))
+// THE DIFFERENCE OF TWO NUMBERS N - (N-1) IS ALL THE BITS ON RIGHTMOST ONE ARE FLIPPED INCLUDING THE RIGHTMOST ONE 0100 - 0001 -> 0011
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
