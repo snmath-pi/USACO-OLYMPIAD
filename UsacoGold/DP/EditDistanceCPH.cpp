@@ -89,7 +89,8 @@ int main() {
     string x, y;
     cin >> x >> y;
     int n = sz(x), m = sz(y);
-    vvi d(n + 1, vi(m + 1));
+    constexpr int inf = 1e9 + 7;
+    vvi d(n + 1, vi(m + 1, inf));
     rep(i, m) d[0][i] = i;
     rep(i, n) d[i][0] = i;
     repn(i, n) {
