@@ -82,17 +82,12 @@ int t, n, m, source;
 // n number of vertices in the given graph
 // m number of edges in the given graph
 // source: distance of all the vertices from this given source
-// the graph may have negative weight edges but never negitive weight cycles
-// why? If there is such a negative cycle, you can just traverse this cycle over and over, 
-// in each iteration making the cost of the path smaller. So you can make certain paths arbitrarily small, or in other words that shortest path is undefined. 
-//That automatically means that an undirected graph cannot have any negative weight edges, 
-//as such an edge forms already a negative cycle as you can move back and forth along that edge as long as you like.
-//This algorithm can also be used to detect the presence of negative cycles. The graph has a negative cycle if at the end of the algorithm, 
-// the distance from a vertex v to itself is negative.
 void solve() {
     cin >> n >> m >> source;
     source--; const int inf = 1e9 + 7;
     vvi dis(n, vi(n, inf));
+    vvi p(n, vi(n, -1)); // for retrieval of shortest path b/w any two vertices 
+    rep(i, n) rep(j, n) p[i][j] = i;
     rep(i, n) dis[i][i] = 0;
     rep(i, m) {
         int u, v, w;
@@ -103,11 +98,10 @@ void solve() {
     // use all nodes as intermediate nodes
     rep(intermediate, n) {
         rep(i, n) rep(j, n) {
-            chkmin(dis[i][j], dis[i][intermediate] + dis[intermediate][j]);
-          /*
-          in case of negative weight edges it is better to check
-          if(dis[i][j] < inf && dis[j][i] < inf) chkmin(dis[i][j], dis[i][intermediate] + dis[intermediate][j]);
-          */
+            if(dis[i][intermediate] + dis[intermediate][j] < dis[i][j]) {
+                dis[i][j] = dis[i][intermediate] + dis[intermediate][j];
+                p[i][j] = p[intermediate][j];
+            }
         }
     }
     rep(i, n) {
@@ -115,7 +109,16 @@ void solve() {
             cout << dis[i][j] << sp;
         }cout << nl;
     }
-    
+
+    int i, j; cin >> i >> j;
+    // print path b/w i & j
+    i--, j--;
+    function<void(int, int)> print_path = [&](int i, int j) {
+        if(i!=j) print_path(i, p[i][j]);
+        cout << j << sp;
+    };
+    print_path(i, j);
+
 /* sample
 5 7 1
 1 2 5
