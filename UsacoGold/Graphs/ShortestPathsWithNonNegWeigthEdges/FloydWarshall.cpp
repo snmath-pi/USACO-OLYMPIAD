@@ -87,7 +87,8 @@ void solve() {
     source--; const int inf = 1e9 + 7;
     vvi dis(n, vi(n, inf));
     vvi p(n, vi(n, -1)); // for retrieval of shortest path b/w any two vertices 
-    rep(i, n) rep(j, n) p[i][j] = i;
+    rep(i, n) rep(j, n) p[i][j] = i; // p[i][j] -> last vertex before j
+    // // on a shortest path from i to j, i.e. i -> ... -> p[i][j] -> j
     rep(i, n) dis[i][i] = 0;
     rep(i, m) {
         int u, v, w;
@@ -118,6 +119,17 @@ void solve() {
         cout << j << sp;
     };
     print_path(i, j);
+ 
+    // Transitive Closure Problem using FW
+  //Given a graph, determine if vertex i is connected to j.
+    vvi possible(n, vi(n, 1));
+    rep(k, n) {
+       rep(i, n) {
+         rep(j, n) {
+           possible[i][j] = possible[i][j] | (possible[i][k] & possible[k][j]);
+         }
+       }
+    }
 
 /* sample
 5 7 1
