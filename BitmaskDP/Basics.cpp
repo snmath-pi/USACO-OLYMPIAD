@@ -128,6 +128,9 @@ int main() {
    	while(b = (b-x) & x) {
    		// process
    	}
+ 
+ 
+    // (x | y) - y is  same as x & (~y)
 
 
 
