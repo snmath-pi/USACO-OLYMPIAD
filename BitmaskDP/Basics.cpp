@@ -131,6 +131,7 @@ int main() {
  
  
     // (x | y) - y is  same as x & (~y)
+    // complement(x) = x ^ (N - 1) where N -> power of 2 https://codeforces.com/problemset/problem/1631/C
 
 
 
